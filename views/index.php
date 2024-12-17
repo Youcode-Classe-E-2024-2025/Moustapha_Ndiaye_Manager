@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
+<?php
+    require_once__DIR__ ."../config/config.php";
 
-<head>
-    <link href="/assets/css/output.css" rel="stylesheet">
-</head>
-
-<body>
-   
-
-</body>
-
-</html>
+?>
