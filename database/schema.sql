@@ -1,18 +1,6 @@
 CREATE DATABASE IF NOT EXISTS recipeDB;
 USE recipeDB;
 
--- ADMIN Table 
-CREATE TABLE IF NOT EXISTS ADMIN (
-    admin_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    Fname VARCHAR(100) NOT NULL,
-    Lname VARCHAR(100) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    password_hash VARBINARY(255) NOT NULL,
-    role ENUM('super_admin', 'admin', 'moderator') NOT NULL DEFAULT 'admin',
-    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    last_login TIMESTAMP NULL
-);
-
 -- USERS Table 
 CREATE TABLE IF NOT EXISTS USERS (
     user_id INTEGER PRIMARY KEY AUTO_INCREMENT,
@@ -21,9 +9,7 @@ CREATE TABLE IF NOT EXISTS USERS (
     email VARCHAR(255) NOT NULL UNIQUE, 
     password_hash VARBINARY(255) NOT NULL,
     registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    role ENUM('user', 'premium_user') NOT NULL DEFAULT 'user',
-    admin_id INTEGER,
-    FOREIGN KEY (admin_id) REFERENCES ADMIN(admin_id) ON DELETE SET NULL
+    role ENUM('user', 'admin') NOT NULL DEFAULT 'user'  -- Rôle de l'utilisateur
 );
 
 -- RECIPE_CATEGORY Table 
@@ -34,7 +20,7 @@ CREATE TABLE IF NOT EXISTS RECIPE_CATEGORY (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- RECIPE  Table 
+-- RECIPE Table 
 CREATE TABLE IF NOT EXISTS RECIPE (
     recipe_id INTEGER PRIMARY KEY AUTO_INCREMENT,
     user_id INTEGER NOT NULL,
@@ -98,16 +84,14 @@ CREATE TABLE IF NOT EXISTS RATING (
 -- SESSION Table 
 CREATE TABLE IF NOT EXISTS SESSION (
     session_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    user_id INTEGER,
-    admin_id INTEGER,
+    user_id INTEGER,  -- Référence uniquement à l'utilisateur
     session_token VARCHAR(255) NOT NULL UNIQUE,
     ip_address VARCHAR(45),
     user_agent VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     last_activity TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     expired BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (user_id) REFERENCES USERS(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (admin_id) REFERENCES ADMIN(admin_id) ON DELETE CASCADE
+    FOREIGN KEY (user_id) REFERENCES USERS(user_id) ON DELETE CASCADE
 );
 
 -- Add indexes for performance

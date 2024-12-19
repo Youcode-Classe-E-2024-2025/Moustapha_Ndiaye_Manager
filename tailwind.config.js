@@ -1,8 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "index.php",
-    "./views/*.php",
+    './public/**/*.html',    
+    './public/**/*.php',     
+    './views/**/*.php',
     "./assets/js/*.js"
   ],
   theme: {

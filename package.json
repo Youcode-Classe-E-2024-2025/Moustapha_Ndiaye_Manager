@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css",
-    "dev": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch"
+     "dev": "tailwindcss -i ./public/assets/css/input.css -o ./public/assets/css/output.css --watch"
   },
   "keywords": [],
   "author": "",
