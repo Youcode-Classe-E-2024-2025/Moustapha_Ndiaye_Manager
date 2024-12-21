@@ -3,21 +3,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// process/login_process.php
-// die("OK login process");
+
 // Inclure la connexion à la base de données
 require_once __DIR__ . '/../config/database.php';
 require_once '../includes/auth_functions.php';
-//require_once '../includes/functions.php';
-// Appel de la fonction pour obtenir une connexion PDO
-$pdo = db_connect();
-
-// if (!$pdo) {
-//     die("Erreur : La connexion à la base de données est introuvable.");
-// } else {
-//     echo 'Connexion bien établie.';
-// }
-
 
 // Vérifier si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -50,7 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 exit();
             }
         } else {
-            echo "Nom d'utilisateur ou mot de passe incorrect.";
+            //echo "Nom d'utilisateur ou mot de passe incorrect.";
+            header('Location: login?loginIn=1');
+                exit;
         }
     } else {
         echo "Erreur de connexion à la base de données.";

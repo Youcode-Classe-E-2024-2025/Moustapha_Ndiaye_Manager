@@ -1,9 +1,8 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 require_once __DIR__ . '/../process/login_process.php'; 
-
 ?>
 
 <!DOCTYPE html>
@@ -49,6 +48,12 @@ require_once __DIR__ . '/../process/login_process.php';
                     <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
                         <p class="font-bold">Registration Successful!</p>
                         <p>You can now log in with your credentials.</p>
+                    </div>
+                <?php endif; ?>
+                <?php if ((isset($_GET['loginIn']) && $_GET['loginIn'] == 1)): ?>
+                    <div class="bg-black border-l-4 border-red-500 text-white p-4 mb-4" role="alert">
+                        <p class="font-bold">Error!</p>
+                        <p>Please enter your correct credentials or register yourself.</p>
                     </div>
                 <?php endif; ?>
 

@@ -1,6 +1,8 @@
 RewriteEngine On
 RewriteRule ^login$ views/login.php [L]
 RewriteRule ^register$ views/register.php [L]
+RewriteRule ^register$ views/dashbord.php [L]
+RewriteRule ^register$ views/homePage.php [L]
 RewriteRule ^admin$ public/admin.php [L]
 RewriteRule ^$ views/login.php [L]
 RewriteRule ^process/(.*)$ process/$1 [L]
