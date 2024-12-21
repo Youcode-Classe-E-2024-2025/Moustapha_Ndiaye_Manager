@@ -1,25 +1,14 @@
-['showRegister', 'showLogin'].forEach(buttonId => {
-    document.getElementById(buttonId).addEventListener('click', function() {
-        const isRegister = buttonId === 'showRegister';
-        
-        // Gérer les styles des boutons
-        document.getElementById('showRegister').classList.toggle('bg-white', isRegister);
-        document.getElementById('showRegister').classList.toggle('text-yellow-500', isRegister);
-       
-        document.getElementById('showLogin').classList.toggle('bg-white', !isRegister);
-        document.getElementById('showLogin').classList.toggle('text-yellow-500', !isRegister);
+// Sélectionner le formulaire
+const form = document.querySelector("form");
 
-        // Gérer la visibilité des formulaires
-        document.getElementById('registerForm').classList.toggle('translate-x-full', !isRegister);
-        document.getElementById('registerForm').classList.toggle('opacity-0', !isRegister);
-        document.getElementById('registerForm').classList.toggle('hidden', !isRegister);
-        document.getElementById('registerForm').classList.toggle('translate-x-0', isRegister);
-        document.getElementById('registerForm').classList.toggle('opacity-100', isRegister);
-
-        document.getElementById('loginForm').classList.toggle('translate-x-full', isRegister);
-        document.getElementById('loginForm').classList.toggle('opacity-0', isRegister);
-        document.getElementById('loginForm').classList.toggle('hidden', isRegister);
-        document.getElementById('loginForm').classList.toggle('translate-x-0', !isRegister);
-        document.getElementById('loginForm').classList.toggle('opacity-100', !isRegister);
+if (form) {
+    form.addEventListener("submit", function () {
+        // Attendre un moment pour que le formulaire soit soumis avant de vider les champs
+        setTimeout(() => {
+            const inputs = form.querySelectorAll("input");
+            inputs.forEach(input => {
+                input.value = ""; // Réinitialiser la valeur de chaque champ
+            });
+        }, 5); // Attendre 10 ms pour s'assurer que la soumission est terminée
     });
-});
+}

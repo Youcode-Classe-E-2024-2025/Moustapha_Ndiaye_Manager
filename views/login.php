@@ -2,6 +2,9 @@
 // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Pragma: no-cache");
+header("Expires: Tue, 01 Jan 2000 00:00:00 GMT");
 require_once __DIR__ . '/../process/login_process.php'; 
 ?>
 
@@ -61,11 +64,11 @@ require_once __DIR__ . '/../process/login_process.php';
                 <div id="loginForm" class="w-full max-w-sm mx-auto ">
                     <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-700">Log In</h2>
 
-                    <form action="login" method="POST">
+                    <form action="login" method="POST" id="loginForm">
                         <!-- Login form fields -->
                         <div class="mb-3 md:mb-4">
                             <label for="login_email" class="block text-xs md:text-sm font-medium text-gray-600">Email</label>
-                            <input type="email" id="login_email" name="email" required
+                            <input type="email" id="login_email" name="email" required 
                                 class="w-full mt-1 md:mt-2 p-2 md:p-3 text-sm md:text-base 
                                 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-500"
                                 placeholder="Your email">
@@ -95,7 +98,7 @@ require_once __DIR__ . '/../process/login_process.php';
         </div>
     </div>
 
-    <script src="../assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 
 </body>
 </html>

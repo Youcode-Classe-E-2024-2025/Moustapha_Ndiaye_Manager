@@ -90,16 +90,3 @@ function logout_user()
     exit();
 }
 
-function display_registration_success()
-{
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-
-    if (isset($_SESSION['registration_success'])) {
-        $message = $_SESSION['registration_success'];
-        unset($_SESSION['registration_success']); // On supprime le message après l'avoir affiché
-        return "<div class='success-message'>" . htmlspecialchars($message, ENT_QUOTES, 'UTF-8') . "</div>";
-    }
-    return '';
-}

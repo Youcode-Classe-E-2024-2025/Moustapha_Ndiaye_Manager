@@ -1,4 +1,5 @@
 <?php
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -46,7 +47,7 @@ require_once __DIR__ . '/../process/register_process.php';
                 <!-- Sign Up Form -->
                 <div id="registerForm" class="w-full max-w-sm mx-auto">
                     <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-700">Sign Up</h2>
-
+                    
                     <form action="register" method="POST">
                         <div class="mb-3 md:mb-4">
                             <label for="name" class="block text-xs md:text-sm font-medium text-gray-600">Full Name</label>
@@ -54,7 +55,7 @@ require_once __DIR__ . '/../process/register_process.php';
                                 class="w-full mt-1 md:mt-2 p-2 md:p-3 text-sm md:text-base 
                                 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-500"
                                 placeholder="Your full name"
-                                value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>">
+                                value="">
                         </div>
 
                         <div class="mb-3 md:mb-4">
@@ -63,7 +64,7 @@ require_once __DIR__ . '/../process/register_process.php';
                                 class="w-full mt-1 md:mt-2 p-2 md:p-3 text-sm md:text-base 
                                 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-500"
                                 placeholder="Your email"
-                                value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
+                                value="">
                         </div>
 
                         <div class="mb-3 md:mb-4">
@@ -92,7 +93,7 @@ require_once __DIR__ . '/../process/register_process.php';
             </div>
         </div>
     </div>
-    
+
     <?php if (!empty($errors)): ?>
         <div class="fixed top-4 right-4 left-4 md:left-auto md:w-96 z-50">
             <?php foreach ($errors as $error): ?>

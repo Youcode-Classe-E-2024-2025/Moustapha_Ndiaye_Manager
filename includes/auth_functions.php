@@ -173,27 +173,27 @@ function register_user($fname, $lname, $email, $password, $connexion)
 }
 
 
-// function display_registration_success() {
-//     if (session_status() === PHP_SESSION_NONE) {
-//         session_start();
-//     }
+function display_registration_success() {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     
-//     if (isset($_SESSION['registration_success'])) {
-//         $message = $_SESSION['registration_success'];
-//         unset($_SESSION['registration_success']); // On supprime le message après l'avoir affiché
-//         return "<div class='success-message'>" . htmlspecialchars($message, ENT_QUOTES, 'UTF-8') . "</div>";
-//     }
-//     return '';
-// } 
+    if (isset($_SESSION['registration_success'])) {
+        $message = $_SESSION['registration_success'];
+        unset($_SESSION['registration_success']); // On supprime le message après l'avoir affiché
+        return "<div class='success-message'>" . htmlspecialchars($message, ENT_QUOTES, 'UTF-8') . "</div>";
+    }
+    return '';
+} 
 
 
-// function sanitize_input($input) {
-//     if (is_array($input)) {
-//         return array_map('sanitize_input', $input);
-//     }
-//     return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
-// }
+function sanitize_input($input) {
+    if (is_array($input)) {
+        return array_map('sanitize_input', $input);
+    }
+    return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+}
 
-// function show_error($message) {
-//     echo "<div class='error'>" . htmlspecialchars($message, ENT_QUOTES, 'UTF-8') . "</div>";
-// }
+function show_error($message) {
+    echo "<div class='error'>" . htmlspecialchars($message, ENT_QUOTES, 'UTF-8') . "</div>";
+}
