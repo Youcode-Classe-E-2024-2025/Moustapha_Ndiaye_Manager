@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +16,7 @@
                 bg-transparent border-2 border-white 
                 hover:bg-white hover:text-yellow-500">Log in</a>
             
-            <a href="register" id="showRegister" class="text-white font-semibold px-4 py-2 
+            <a href="/register" id="showRegister" class="text-white font-semibold px-4 py-2 
                 transition-all duration-200 ease-in-out rounded-full 
                 bg-transparent border-2 border-white 
                 hover:bg-white hover:text-yellow-500">Sign up</a>
@@ -37,12 +36,20 @@
 
             <!-- Forms Section -->
             <div class="w-full md:w-1/2 p-4 lg:p-8 flex flex-col justify-center">
-                <!-- Login Form - Similar responsive adjustments -->
+                <!-- Display confirmation message if user is redirected after registration -->
+                <?php if (isset($_GET['registered']) && $_GET['registered'] == '1'): ?>
+                    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
+                        <p class="font-bold">Registration Successful!</p>
+                        <p>You can now log in with your credentials.</p>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Login Form -->
                 <div id="loginForm" class="w-full max-w-sm mx-auto ">
                     <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-700">Log In</h2>
 
-                    <form action="process/login_process.php" method="POST">
-                        <!-- Login form fields with similar responsive classes -->
+                    <form action="login" method="POST">
+                        <!-- Login form fields -->
                         <div class="mb-3 md:mb-4">
                             <label for="login_email" class="block text-xs md:text-sm font-medium text-gray-600">Email</label>
                             <input type="email" id="login_email" name="email" required

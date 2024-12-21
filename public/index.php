@@ -1,33 +1,54 @@
 <?php
 // public/index.php
 
-// Démarrer la session
 session_start();
 
-// Récupérer l'URL demandée
-$request_uri = $_SERVER['REQUEST_URI'];
+// Récupérer l'URL et la méthode HTTP
+$request_uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$request_method = $_SERVER['REQUEST_METHOD'];
 
-// Routage simple
+// Fonction pour inclure les vues
+function safeRequire($path) {
+    if (file_exists($path)) {
+        require_once $path;
+    } else {
+        header("HTTP/1.0 404 Not Found");
+        echo "Page non trouvée";
+        exit();
+    }
+}
+
+// Gérer les requêtes POST
+if ($request_method === 'POST') {
+    if ($request_uri === '/login') {
+        require_once '../process/login_process.php';
+        exit();
+    } elseif ($request_uri === '/register') {
+        require_once '../process/register_process.php';
+        exit();
+    }
+}
+
+// Gérer les requêtes GET
 switch ($request_uri) {
     case '/login':
-        require_once '../views/login.php';
+        safeRequire('../views/login.php');
         break;
 
     case '/register':
-        require_once '../views/register.php'; 
+        safeRequire('../views/register.php');
         break;
 
-    case '/admin':
-        // Vérifier si l'utilisateur est connecté (si nécessaire)
+    case '/dashboard':
         if (!isset($_SESSION['user_id'])) {
-            header('Location: /login'); 
+            header('Location: /login');
             exit();
         }
-        require_once 'admin.php'; 
+        safeRequire('../views/dashboard.php');
         break;
 
     case '/':
-        require_once '../views/login.php'; 
+        header('Location: /login');
         break;
 
     default:
