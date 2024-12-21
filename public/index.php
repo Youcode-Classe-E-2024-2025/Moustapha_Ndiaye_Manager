@@ -47,6 +47,14 @@ switch ($request_uri) {
         safeRequire('../views/dashboard.php');
         break;
 
+        case '/homePage':
+            if (!isset($_SESSION['user_id'])) {
+                header('Location: /login');
+                exit();
+            }
+            safeRequire('../views/homePage.php');
+            break;
+
     case '/':
         header('Location: /login');
         break;

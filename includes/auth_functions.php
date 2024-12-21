@@ -113,12 +113,15 @@ function is_first_user($connexion)
 {
     try {
         $stmt = $connexion->query("SELECT COUNT(*) FROM users");
-        return $stmt->fetchColumn() === "0";
+        // On vérifie si la table est vide
+        return $stmt->fetchColumn() == 0; // renvoie true si aucun utilisateur
     } catch (PDOException $e) {
         error_log("Erreur lors de la vérification du premier utilisateur: " . $e->getMessage());
         return false;
     }
 }
+
+
 
 function register_user($fname, $lname, $email, $password, $connexion)
 {
@@ -130,6 +133,7 @@ function register_user($fname, $lname, $email, $password, $connexion)
 
         // Détermine si c'est le premier utilisateur
         $is_admin = is_first_user($connexion);
+         
         $role = $is_admin ? 'admin' : 'user';
 
         // Hash le mot de passe

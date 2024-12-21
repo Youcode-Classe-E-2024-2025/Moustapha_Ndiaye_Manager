@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 // Inclure la connexion à la base de données
 require_once __DIR__ . '/../config/database.php';
 require_once '../includes/auth_functions.php';
-require_once '../includes/functions.php';
+//require_once '../includes/functions.php';
 // Appel de la fonction pour obtenir une connexion PDO
 $pdo = db_connect();
 
@@ -40,10 +40,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['role'] = $user['role'];
-
-            // Rediriger l'utilisateur vers le tableau de bord ou page admin
-            header("Location: /admin");
-            exit();
+            if ($_SESSION['role'] == 'admin') {
+                // Rediriger l'utilisateur vers le tableau de bord ou page admin
+                header("Location: /dashboard");
+                exit();
+            } else {
+                // Rediriger l'utilisateur vers le tableau de bord ou page admin
+                header("Location: /homePage");
+                exit();
+            }
         } else {
             echo "Nom d'utilisateur ou mot de passe incorrect.";
         }
@@ -52,12 +57,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-function start_user_session($user) {
+function start_user_session($user)
+{
     session_start();
-    
+
     // Régénération de l'ID de session pour prévenir la fixation de session
     session_regenerate_id(true);
-    
+
     $_SESSION['user_id'] = $user['user_id'];
     $_SESSION['fname'] = htmlspecialchars($user['Fname'], ENT_QUOTES, 'UTF-8');
     $_SESSION['lname'] = htmlspecialchars($user['Lname'], ENT_QUOTES, 'UTF-8');
@@ -67,41 +73,42 @@ function start_user_session($user) {
 }
 
 
-function is_logged_in() {
+function is_logged_in()
+{
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
-    
+
     return isset($_SESSION['user_id']);
 }
 
-function is_admin() {
+function is_admin()
+{
     if (!is_logged_in()) {
         return false;
     }
-    
+
     return $_SESSION['role'] === 'admin';
 }
 
-function logout_user() {
+function logout_user()
+{
     session_start();
     session_destroy();
     header('Location: login.php');
     exit();
 }
 
-function display_registration_success() {
+function display_registration_success()
+{
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
-    
+
     if (isset($_SESSION['registration_success'])) {
         $message = $_SESSION['registration_success'];
         unset($_SESSION['registration_success']); // On supprime le message après l'avoir affiché
         return "<div class='success-message'>" . htmlspecialchars($message, ENT_QUOTES, 'UTF-8') . "</div>";
     }
     return '';
-} 
-
-
-?>
+}
