@@ -130,15 +130,7 @@ require_once __DIR__ . '/../process/register_process.php';
         </div>
     </div>
 
-    <?php if (!empty($errors)): ?>
-        <div class="fixed top-4 right-4 left-4 md:left-auto md:w-96 z-50">
-            <?php foreach ($errors as $error): ?>
-                <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-2 rounded shadow-md">
-                    <?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
+    
     <script src="../assets/js/main.js"></script>
 </body>
 

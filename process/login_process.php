@@ -44,24 +44,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 exit;
         }
     } else {
-        echo "Erreur de connexion à la base de données.";
+        echo "Connexion database failed.";
     }
 }
 
-function start_user_session($user)
-{
-    session_start();
+// function start_user_session($user)
+// {
+//     session_start();
 
-    // Régénération de l'ID de session pour prévenir la fixation de session
-    session_regenerate_id(true);
+//     // Régénération de l'ID de session pour prévenir la fixation de session
+//     session_regenerate_id(true);
 
-    $_SESSION['user_id'] = $user['user_id'];
-    $_SESSION['fname'] = htmlspecialchars($user['Fname'], ENT_QUOTES, 'UTF-8');
-    $_SESSION['lname'] = htmlspecialchars($user['Lname'], ENT_QUOTES, 'UTF-8');
-    $_SESSION['email'] = $user['email'];
-    $_SESSION['role'] = $user['role'];
-    $_SESSION['last_activity'] = time();
-}
+//     $_SESSION['user_id'] = $user['user_id'];
+//     $_SESSION['fname'] = htmlspecialchars($user['Fname'], ENT_QUOTES, 'UTF-8');
+//     $_SESSION['lname'] = htmlspecialchars($user['Lname'], ENT_QUOTES, 'UTF-8');
+//     $_SESSION['email'] = $user['email'];
+//     $_SESSION['role'] = $user['role'];
+//     $_SESSION['last_activity'] = time();
+// }
 
 
 function is_logged_in()
@@ -82,10 +82,10 @@ function is_admin()
     return $_SESSION['role'] === 'admin';
 }
 
-function logout_user()
-{
-    session_start();
-    session_destroy();
-    header('Location: login.php');
-    exit();
-}
+// function logout_user()
+// {
+//     session_start();
+//     session_destroy();
+//     header('Location: login.php');
+//     exit();
+// }

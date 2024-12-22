@@ -20,23 +20,23 @@
             <nav class="mt-4">
                 <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-100 active-nav"
                     data-target="users">
-                    Utilisateurs
+                    Users
                 </a>
                 <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-100"
                     data-target="recipes">
-                    Recettes
+                    Recipes
                 </a>
                 <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-100"
                     data-target="categories">
-                    Catégories
+                    Categorys
                 </a>
                 <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-100"
                     data-target="ingredients">
-                    Ingrédients
+                    Ingredients
                 </a>
                 <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-100"
                     data-target="comments">
-                    Commentaires
+                    Comments
                 </a>
             </nav>
         </aside>
