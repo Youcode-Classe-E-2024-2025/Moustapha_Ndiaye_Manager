@@ -1,0 +1,96 @@
+------------------------------Moustapha Ndiaye Manager
+------------------------------Description
+Ce projet est une application web sécurisée pour la gestion des utilisateurs et des administrateurs. Développée avec HTML, Tailwind CSS, JavaScript, PHP, et SQL, elle permet de gérer les comptes avec des fonctionnalités robustes et une interface moderne.
+
+------------------------------Fonctionnalités
+Utilisateurs :
+Création de compte avec validation sécurisée.
+Connexion avec redirection vers une page dédiée.
+Administrateurs :
+Validation des nouveaux comptes utilisateurs.
+Gestion complète des comptes utilisateurs (CRUD avec soft delete).
+Tableau de bord incluant des statistiques.
+Sécurité :
+Hachage des mots de passe avec bcrypt.
+Protection contre les attaques XSS, CSRF, et injections SQL.
+Requêtes SQL préparées pour sécuriser les interactions avec la base de données.
+
+------------------------------Prérequis
+PHP 8.0 ou supérieur.
+Serveur local (XAMPP, WAMP, ou Laragon).
+MySQL pour la base de données.
+Composer (pour les dépendances PHP si nécessaire).
+Navigateur moderne (Chrome, Firefox).
+utiliser Tailwind CSS via CDN.
+
+------------------------------Installation et configuration
+1. Cloner le projet
+bash
+Copy code
+git clone https://github.com/Youcode-Classe-E-2024-2025/Moustapha_Ndiaye_Manager.git
+cd Moustapha_Ndiaye_Manager
+
+2. Configurer la base de données
+Accédez à votre outil de gestion MySQL (phpMyAdmin ou autre).
+
+Importez le fichier SQL situé dans database/achema.sql :
+
+Ce fichier crée la structure de la base de données et les tables nécessaires.
+Configurez les paramètres de connexion à la base de données dans le fichier includes/config.php :
+
+php
+Copy code
+<?php
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'recipeDB');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+?>
+3. Configurer le serveur local
+Placez les fichiers du projet dans le répertoire de votre serveur local :
+Exemple avec XAMPP : C:\xampp\htdocs\Moustapha_Ndiaye_Manager.
+Activez Apache et MySQL via le panneau de contrôle de votre serveur.
+Accédez au projet dans votre navigateur à l’adresse :
+http://localhost/Moustapha_Ndiaye_Manager/
+
+------------------------------Utilisation
+Pour les utilisateurs :
+Inscrivez-vous via le formulaire sur la page d’accueil.
+Connectez-vous pour accéder à votre espace utilisateur.
+Pour les administrateurs :
+Connectez-vous avec un compte administrateur.
+Gérez les utilisateurs via le tableau de bord.
+Technologies utilisées
+HTML5 : Pour la structure des pages.
+Tailwind CSS : Pour une interface utilisateur moderne et responsive.
+JavaScript : Pour l'interactivité.
+PHP : Pour le backend et la logique métier.
+MySQL : Pour la gestion des données.
+SweetAlert : Pour des notifications visuelles et conviviales.
+Tests
+Validation des formulaires : Assurez-vous que les champs respectent les validations côté client et serveur.
+Sécurité :
+Vérifiez que les mots de passe sont hachés.
+Testez les protections contre les injections SQL et attaques XSS.
+------------------------------Structure du projet
+Moustapha_Ndiaye_Manager/
+├── assets/
+│   ├── css/
+│   │   └── tailwind.css
+│   ├── js/
+│   │   └── script.js
+├── database/
+│   └── setup.sql
+├── includes/
+│   ├── config.php
+│   ├── header.php
+│   └── footer.php
+├── pages/
+│   ├── dashboard.php
+│   ├── login.php
+│   └── register.php
+├── index.php
+└── README.md
+Lien du repository
+Pour consulter ou contribuer au projet, rendez-vous sur (https://github.com/Youcode-Classe-E-2024-2025/Moustapha_Ndiaye_Manager)
+.

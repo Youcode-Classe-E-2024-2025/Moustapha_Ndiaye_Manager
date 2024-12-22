@@ -38,6 +38,10 @@
                     data-target="comments">
                     Comments
                 </a>
+                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-100"
+                    data-target="">
+                    Deconnexion
+                </a>
             </nav>
         </aside>
 
@@ -52,14 +56,14 @@
     <!-- Modal de confirmation -->
     <div id="confirmModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden flex items-center justify-center">
         <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h3 class="text-lg font-bold mb-4">Confirmer l'action</h3>
-            <p id="modalMessage">Êtes-vous sûr de vouloir effectuer cette action ?</p>
+            <h3 class="text-lg font-bold mb-4">Confirm action</h3>
+            <p id="modalMessage">Are you sure to continue process?</p>
             <div class="mt-4 flex justify-end gap-4">
                 <button onclick="closeModal()" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">
-                    Annuler
+                    Cancel
                 </button>
                 <button id="confirmBtn" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
-                    Confirmer
+                    Confirm
                 </button>
             </div>
         </div>
