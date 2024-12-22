@@ -8,7 +8,8 @@ $request_uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $request_method = $_SERVER['REQUEST_METHOD'];
 
 // Fonction pour inclure les vues
-function safeRequire($path) {
+function safeRequire($path)
+{
     if (file_exists($path)) {
         require_once $path;
     } else {
@@ -47,13 +48,20 @@ switch ($request_uri) {
         safeRequire('../views/dashboard.php');
         break;
 
-        case '/homePage':
-            if (!isset($_SESSION['user_id'])) {
-                header('Location: /login');
-                exit();
-            }
-            safeRequire('../views/homePage.php');
-            break;
+    case '/homePage':
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: /login');
+            exit();
+        }
+        safeRequire('../views/homePage.php');
+        break;
+    case '/admin_actions_process':
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: /login');
+            exit();
+        }
+        safeRequire('../process/admin_actions_process.php');
+        break;
 
     case '/':
         header('Location: /login');
